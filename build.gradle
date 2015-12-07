@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Advent of Code Solution',
+        	'Implementation-Version': '1.0',
+            'Main-Class': 'net.kenvanhoeylandt.Application'
+    }
+    archiveName 'AdventOfCode2016.jar'
+}
+
+dependencies {
+    compile(
+        [group: 'commons-collections', name: 'commons-collections', version: '3.2'],
+        [group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.+'],
+        [group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.+'],
+        [group: 'com.squareup.okhttp', name: 'okhttp', version: '2.6.0'],
+
+        // Json
+        [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.6.+'],
+        [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.6.+'],
+        [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.6.+'],
+        [group: 'org.json', name: 'json', version: '20151123'],
+
+        fileTree(dir: 'src/main/libs', include: ['*.jar'])
+    )
+}
