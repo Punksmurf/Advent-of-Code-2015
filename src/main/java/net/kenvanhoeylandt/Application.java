@@ -1,9 +1,11 @@
 package net.kenvanhoeylandt;
 
 import net.kenvanhoeylandt.services.SessionService;
+import net.kenvanhoeylandt.solutions.Solution;
 import net.kenvanhoeylandt.solutions.day1.Day1Solution;
 import net.kenvanhoeylandt.solutions.day2.Day2Solution;
 import net.kenvanhoeylandt.solutions.day3.Day3Solution;
+import net.kenvanhoeylandt.solutions.day4.Day4Solution;
 
 public class Application
 {
@@ -11,7 +13,8 @@ public class Application
 	{
 		Day1Solution.class,
 		Day2Solution.class,
-		Day3Solution.class
+		Day3Solution.class,
+		Day4Solution.class
 	};
 
 	public static void main(String[] args)
@@ -40,7 +43,7 @@ public class Application
 
 		try
 		{
-			net.kenvanhoeylandt.solutions.Solution solution = getSolution(day - 1);
+			Solution solution = getSolution(day - 1);
 
 			solution.run();
 		}
@@ -56,7 +59,7 @@ public class Application
 		System.out.println("\tjava -jar AdventOfCode2016.jar [sessionToken] [day]");
 	}
 
-	private static net.kenvanhoeylandt.solutions.Solution getSolution(int index) throws Exception
+	private static Solution getSolution(int index) throws Exception
 	{
 		if (index < 0 || index >= mSolutionClasses.length)
 		{
@@ -65,13 +68,13 @@ public class Application
 
 		Class class_object = mSolutionClasses[index];
 
-		if (!net.kenvanhoeylandt.solutions.Solution.class.isAssignableFrom(class_object))
+		if (!Solution.class.isAssignableFrom(class_object))
 		{
 			throw new Exception("class is not a Solution type");
 		}
 
 		@SuppressWarnings("unchecked")
-		Class<net.kenvanhoeylandt.solutions.Solution> solution_class_object = (Class<net.kenvanhoeylandt.solutions.Solution>)class_object;
+		Class<Solution> solution_class_object = (Class<Solution>)class_object;
 
 		return solution_class_object.newInstance();
 	}

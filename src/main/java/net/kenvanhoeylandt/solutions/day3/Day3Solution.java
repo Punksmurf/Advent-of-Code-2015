@@ -15,7 +15,7 @@ public class Day3Solution extends Solution
 	}
 
 	@Override
-	protected Task<String> solve(String input) throws Exception
+	protected Task<Object> solve(String input) throws Exception
 	{
 		Direction[] directions = DirectionFactory.create(input);
 		Grid grid = new Grid();
@@ -25,6 +25,6 @@ public class Day3Solution extends Solution
 
 		int count = grid.getVisitCount();
 
-		return Task.forResult(Integer.toString(count));
+		return Task.forResult(count);
 	}
 }

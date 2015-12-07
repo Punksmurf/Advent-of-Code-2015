@@ -11,7 +11,7 @@ public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 	}
 
 	@Override
-	protected Task<String> solve(String input) throws Exception
+	protected Task<Object> solve(String input) throws Exception
 	{
 		int count = 0;
 
@@ -22,9 +22,7 @@ public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 			count += getFloorDifference(character);
 		}
 
-		String result = Integer.toString(count);
-
-		return Task.forResult(result);
+		return Task.forResult(count);
 	}
 
 	/**

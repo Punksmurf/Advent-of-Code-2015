@@ -15,7 +15,7 @@ public class Day2Solution extends net.kenvanhoeylandt.solutions.Solution
 	}
 
 	@Override
-	protected Task<String> solve(String input) throws Exception
+	protected Task<Object> solve(String input) throws Exception
 	{
 		String[] lines = input.split("\n");
 
@@ -23,6 +23,6 @@ public class Day2Solution extends net.kenvanhoeylandt.solutions.Solution
 
 		int paper_needed = BoxMath.calculatePaperNeeded(box_list);
 
-		return Task.forResult(Integer.toString(paper_needed));
+		return Task.forResult(paper_needed);
 	}
 }
