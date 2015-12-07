@@ -13,16 +13,24 @@ public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 	@Override
 	protected Task<Object> solve(String input) throws Exception
 	{
-		int count = 0;
+		int floor_index = 0;
+		int basement_counter = -1;
 
 		for (int i = 0; i < input.length(); ++i)
 		{
 			char character = input.charAt(i);
 
-			count += getFloorDifference(character);
+			floor_index += getFloorDifference(character);
+
+			if (floor_index == -1 && basement_counter == -1)
+			{
+				basement_counter = i + 1;
+			}
 		}
 
-		return Task.forResult(count);
+		String result = String.format("Floors: %d, Basement counter: %d", floor_index, basement_counter);
+
+		return Task.forResult(result);
 	}
 
 	/**
