@@ -3,13 +3,15 @@ package net.kenvanhoeylandt;
 import net.kenvanhoeylandt.services.SessionService;
 import net.kenvanhoeylandt.solutions.day1.Day1Solution;
 import net.kenvanhoeylandt.solutions.day2.Day2Solution;
+import net.kenvanhoeylandt.solutions.day3.Day3Solution;
 
 public class Application
 {
 	private static final Class[] mSolutionClasses = new Class[]
 	{
 		Day1Solution.class,
-		Day2Solution.class
+		Day2Solution.class,
+		Day3Solution.class
 	};
 
 	public static void main(String[] args)

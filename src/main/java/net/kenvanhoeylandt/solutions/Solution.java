@@ -35,8 +35,18 @@ public abstract class Solution implements Runnable
 				if (task.isFaulted())
 				{
 					System.out.println("error");
+
 					Exception exception = task.getError();
-					System.err.println("Solution failed: " + exception.getMessage());
+					String message = exception.getMessage();
+
+					if (message != null)
+					{
+						System.err.println("Solution failed: " + message);
+					}
+					else
+					{
+						exception.printStackTrace();
+					}
 
 					if (InputParsingException.class.isAssignableFrom(exception.getClass()))
 					{
