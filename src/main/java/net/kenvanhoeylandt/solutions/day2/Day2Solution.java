@@ -7,9 +7,9 @@ import net.kenvanhoeylandt.solutions.day2.data.BoxMath;
 
 import java.util.List;
 
-public class Solution extends net.kenvanhoeylandt.solutions.Solution
+public class Day2Solution extends net.kenvanhoeylandt.solutions.Solution
 {
-	public Solution()
+	public Day2Solution()
 	{
 		super(2);
 	}

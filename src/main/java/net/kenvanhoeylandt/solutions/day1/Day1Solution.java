@@ -3,9 +3,9 @@ package net.kenvanhoeylandt.solutions.day1;
 import bolts.Task;
 import net.kenvanhoeylandt.exceptions.InputParsingException;
 
-public class Solution extends net.kenvanhoeylandt.solutions.Solution
+public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 {
-	public Solution()
+	public Day1Solution()
 	{
 		super(1);
 	}
