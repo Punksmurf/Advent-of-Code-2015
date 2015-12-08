@@ -10,7 +10,7 @@ public class NotGate extends SingleInputGate
 	}
 
 	@Override
-	public long getValue()
+	public int getValue()
 	{
 		return ~ getInputValue();
 	}

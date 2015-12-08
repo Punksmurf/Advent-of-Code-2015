@@ -17,7 +17,7 @@ public class GateValueProvider implements ValueProvider
 	}
 
 	@Override
-	public long getValue()
+	public int getValue()
 	{
 		Gate gate = mGateManager.getGate(mGateName);
 

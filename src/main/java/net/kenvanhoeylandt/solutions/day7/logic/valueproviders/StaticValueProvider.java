@@ -4,15 +4,15 @@ import net.kenvanhoeylandt.solutions.day7.logic.ValueProvider;
 
 public class StaticValueProvider implements ValueProvider
 {
-	private final long mValue;
+	private final int mValue;
 
-	public StaticValueProvider(long value)
+	public StaticValueProvider(int value)
 	{
 		mValue = value;
 	}
 
 	@Override
-	public long getValue()
+	public int getValue()
 	{
 		return mValue;
 	}

@@ -16,7 +16,7 @@ abstract public class SingleInputGate extends Gate
 {
 	private final ValueProvider mValueProvider;
 
-	private @Nullable Long mValue = null;
+	private @Nullable Integer mValue = null;
 
 	public SingleInputGate(GateManager gateManager, String outputName, String inputName)
 	{
@@ -33,7 +33,7 @@ abstract public class SingleInputGate extends Gate
 		}
 	}
 
-	protected long getInputValue()
+	protected int getInputValue()
 	{
 		// Must cache value, or the process will be very slow
 		if (mValue == null)

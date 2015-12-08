@@ -10,7 +10,7 @@ public class ValueGate extends SingleInputGate
 	}
 
 	@Override
-	public long getValue()
+	public int getValue()
 	{
 		return getInputValue();
 	}

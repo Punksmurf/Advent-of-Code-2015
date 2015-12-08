@@ -24,5 +24,5 @@ public abstract class Gate
 		return mGateManager;
 	}
 
-	abstract public long getValue();
+	abstract public int getValue();
 }

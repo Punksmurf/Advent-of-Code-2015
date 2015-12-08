@@ -18,9 +18,9 @@ abstract public class DoubleInputGate extends Gate
 
 	private final ValueProvider mSecondValueProvider;
 
-	private @Nullable Long mFirstValue;
+	private @Nullable Integer mFirstValue;
 
-	private @Nullable Long mSecondValue;
+	private @Nullable Integer mSecondValue;
 
 	public DoubleInputGate(GateManager gateManager, String outputName, String firstInputName, String secondInputName)
 	{
@@ -47,7 +47,7 @@ abstract public class DoubleInputGate extends Gate
 		}
 	}
 
-	protected long getFirstInputValue()
+	protected int getFirstInputValue()
 	{
 		// Must cache value, or the process will be very slow
 		if (mFirstValue == null)
@@ -58,7 +58,7 @@ abstract public class DoubleInputGate extends Gate
 		return mFirstValue;
 	}
 
-	protected long getSecondInputValue()
+	protected int getSecondInputValue()
 	{
 		// Must cache value, or the process will be very slow
 		if (mSecondValue == null)

@@ -10,7 +10,7 @@ public class OrGate extends DoubleInputGate
 	}
 
 	@Override
-	public long getValue()
+	public int getValue()
 	{
 		return getFirstInputValue() | getSecondInputValue();
 	}
