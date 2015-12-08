@@ -1,6 +1,5 @@
 package net.kenvanhoeylandt.solutions.day1;
 
-import bolts.Task;
 import net.kenvanhoeylandt.exceptions.InputParsingException;
 
 public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
@@ -11,7 +10,7 @@ public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	protected Object solve(String input) throws Exception
 	{
 		int floor_index = 0;
 		int basement_counter = -1;
@@ -28,9 +27,7 @@ public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 			}
 		}
 
-		String result = String.format("Floors: %d, Basement counter: %d", floor_index, basement_counter);
-
-		return Task.forResult(result);
+		return String.format("Floors: %d, Basement counter: %d", floor_index, basement_counter);
 	}
 
 	/**

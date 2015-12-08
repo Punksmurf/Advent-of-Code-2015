@@ -1,6 +1,5 @@
 package net.kenvanhoeylandt.solutions.day2;
 
-import bolts.Task;
 import net.kenvanhoeylandt.solutions.day2.data.Box;
 import net.kenvanhoeylandt.solutions.day2.data.BoxFactory;
 import net.kenvanhoeylandt.solutions.day2.data.BoxMath;
@@ -15,7 +14,7 @@ public class Day2Solution extends net.kenvanhoeylandt.solutions.Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	protected Object solve(String input) throws Exception
 	{
 		String[] lines = input.split("\n");
 
@@ -24,6 +23,6 @@ public class Day2Solution extends net.kenvanhoeylandt.solutions.Solution
 		int paper_needed = BoxMath.calculatePaperNeeded(box_list);
 		int ribbon_needed = BoxMath.calculateRibbonNeeded(box_list);
 
-		return Task.forResult(String.format("%d paper needed and %d ribbon needed", paper_needed, ribbon_needed));
+		return String.format("%d paper needed and %d ribbon needed", paper_needed, ribbon_needed);
 	}
 }

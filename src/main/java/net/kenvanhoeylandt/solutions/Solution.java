@@ -24,7 +24,7 @@ public abstract class Solution implements Runnable
 		System.out.print("Retrieving assignment data...");
 
 		request(mDay)
-			.onSuccessTask(task ->
+			.onSuccess(task ->
 			{
 				System.out.println("done");
 				System.out.print("Solving assignment...");
@@ -74,5 +74,5 @@ public abstract class Solution implements Runnable
 		return request_service.executeForString(request);
 	}
 
-	abstract protected Task<Object> solve(String input) throws Exception;
+	abstract protected Object solve(String input) throws Exception;
 }

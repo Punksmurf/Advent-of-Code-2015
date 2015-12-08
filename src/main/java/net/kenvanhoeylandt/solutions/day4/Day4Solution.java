@@ -16,7 +16,7 @@ public class Day4Solution extends Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	protected Object solve(String input) throws Exception
 	{
 		input = input.substring(0, input.length() - 1);
 
@@ -37,6 +37,6 @@ public class Day4Solution extends Solution
 			hash = DatatypeConverter.printHexBinary(result_bytes);
 		}
 
-		return Task.forResult(count);
+		return count;
 	}
 }

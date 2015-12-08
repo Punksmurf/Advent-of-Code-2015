@@ -1,6 +1,5 @@
 package net.kenvanhoeylandt.solutions.day5;
 
-import bolts.Task;
 import net.kenvanhoeylandt.solutions.Solution;
 
 public class Day5Solution extends Solution
@@ -11,7 +10,7 @@ public class Day5Solution extends Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	protected Object solve(String input) throws Exception
 	{
 		String[] lines = input.split("\n");
 
@@ -26,7 +25,7 @@ public class Day5Solution extends Solution
 			}
 		}
 
-		return Task.forResult(count);
+		return count;
 	}
 
 	boolean isMatch(String line)
