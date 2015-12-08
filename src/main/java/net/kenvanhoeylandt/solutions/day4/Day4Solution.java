@@ -1,15 +1,14 @@
 package net.kenvanhoeylandt.solutions.day4;
 
-import bolts.Task;
 import net.kenvanhoeylandt.solutions.Solution;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 public class Day4Solution extends Solution
 {
-	private static final String sPrefix = "00000";
-
 	public Day4Solution()
 	{
 		super(4);
@@ -18,6 +17,20 @@ public class Day4Solution extends Solution
 	@Override
 	protected Object solve(String input) throws Exception
 	{
+		int five_zeroes = findZeroPrefix(input, 5);
+		int six_zeroes = findZeroPrefix(input, 6);
+
+		return String.format("five zeroes: %d, six zeroes: %d", five_zeroes, six_zeroes);
+	}
+
+	private int findZeroPrefix(String input, int zeroes) throws NoSuchAlgorithmException
+	{
+		// Create the zeroes prefix String
+		char[] prefix_chars = new char[zeroes];
+		Arrays.fill(prefix_chars, '0');
+		String prefix = new String(prefix_chars);
+
+		// Remove the endline from the input
 		input = input.substring(0, input.length() - 1);
 
 		String hash = "";
@@ -26,7 +39,8 @@ public class Day4Solution extends Solution
 
 		MessageDigest digest = MessageDigest.getInstance("MD5");
 
-		while (!hash.startsWith(sPrefix))
+		// Calculate the hash until we found one that has the prefix we are looking for
+		while (!hash.startsWith(prefix))
 		{
 			count++;
 
