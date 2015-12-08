@@ -1,5 +1,6 @@
 package net.kenvanhoeylandt.solutions.day2.data;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BoxMath
@@ -25,5 +26,33 @@ public class BoxMath
 		}
 
 		return paper_needed;
+	}
+
+	public static int calculateRibbonNeeded(List<Box> boxList)
+	{
+		int ribbon_needed = 0;
+
+		for (Box box : boxList)
+		{
+			ribbon_needed += calculateRibbonNeeded(box);
+		}
+
+		return ribbon_needed;
+	}
+
+	public static int calculateRibbonNeeded(Box box)
+	{
+		int[] dimensions = new int[]
+		{
+			box.getHeight(),
+			box.getWidth(),
+			box.getLength()
+		};
+
+		Arrays.sort(dimensions);
+
+		return (dimensions[0] * 2)
+			+ (dimensions[1] * 2)
+			+ (box.getWidth() * box.getHeight() * box.getLength());
 	}
 }

@@ -22,7 +22,8 @@ public class Day2Solution extends net.kenvanhoeylandt.solutions.Solution
 		List<Box> box_list = BoxFactory.create(lines);
 
 		int paper_needed = BoxMath.calculatePaperNeeded(box_list);
+		int ribbon_needed = BoxMath.calculateRibbonNeeded(box_list);
 
-		return Task.forResult(paper_needed);
+		return Task.forResult(String.format("%d paper needed and %d ribbon needed", paper_needed, ribbon_needed));
 	}
 }
