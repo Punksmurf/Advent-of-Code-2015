@@ -3,12 +3,22 @@ package net.kenvanhoeylandt;
 import net.kenvanhoeylandt.services.SessionService;
 import net.kenvanhoeylandt.solutions.Solution;
 import net.kenvanhoeylandt.solutions.day1.Day1Solution;
+import net.kenvanhoeylandt.solutions.day2.Day2Solution;
+import net.kenvanhoeylandt.solutions.day3.Day3Solution;
+import net.kenvanhoeylandt.solutions.day4.Day4Solution;
+import net.kenvanhoeylandt.solutions.day5.Day5Solution;
+import net.kenvanhoeylandt.solutions.day6.Day6Solution;
 
 public class Application
 {
 	private static final Class[] mSolutionClasses = new Class[]
 	{
 		Day1Solution.class,
+        Day2Solution.class,
+        Day3Solution.class,
+        Day4Solution.class,
+        Day5Solution.class,
+        Day6Solution.class,
 	};
 
 	public static void main(String[] args)
