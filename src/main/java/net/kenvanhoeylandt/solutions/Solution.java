@@ -42,6 +42,7 @@ public abstract class Solution implements Runnable
 					if (message != null)
 					{
 						System.err.println("Solution failed: " + message);
+						exception.printStackTrace();
 					}
 					else
 					{
