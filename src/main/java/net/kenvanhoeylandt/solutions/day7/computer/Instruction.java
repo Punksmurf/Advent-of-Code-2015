@@ -95,6 +95,21 @@ public class Instruction
 		}
 	}
 
+	public String getDestination()
+	{
+		return mDestination;
+	}
+
+	public Source getSourceA()
+	{
+		return mSourceA;
+	}
+
+	public Source getSourceB()
+	{
+		return mSourceB;
+	}
+
 	public boolean execute(Variables variables)
 	{
 		if (mAlreadyRan)

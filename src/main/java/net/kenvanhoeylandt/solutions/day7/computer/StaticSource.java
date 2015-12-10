@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class StaticSource extends Source
 {
-	private final Integer mValue;
+	private Integer mValue;
 
 	public StaticSource(Integer value)
 	{
@@ -15,5 +15,18 @@ public class StaticSource extends Source
 	public Integer getValue(Map<String, Integer> values)
 	{
 		return mValue;
+	}
+
+	@Override
+	public void setValue(Object value)
+	{
+		if (value instanceof Integer)
+		{
+			mValue = (Integer)value;
+		}
+		else
+		{
+			throw new RuntimeException("Cannot assign non-integer value");
+		}
 	}
 }

@@ -116,9 +116,22 @@ public abstract class Wire
 		return null;
 	}
 
+	public static void resetAll()
+	{
+		for (String name : sWires.keySet())
+		{
+			sWires.get(name).reset();
+		}
+	}
+
 	public static Wire getWire(String name)
 	{
 		return sWires.get(name);
+	}
+
+	public void reset()
+	{
+		mSolveTask = null;
 	}
 
 	public String getName()
@@ -138,7 +151,27 @@ public abstract class Wire
 
 	protected abstract Task<Integer> solveInteral();
 
-	protected Task<Integer> getInputA()
+	public void setInputA(String value)
+	{
+		if (mSolveTask != null)
+		{
+			throw new RuntimeException("Cannot set input value after solve request has been issued");
+		}
+
+		mInputA = value;
+	}
+
+	public void setInputB(String value)
+	{
+		if (mSolveTask != null)
+		{
+			throw new RuntimeException("Cannot set input value after solve request has been issued");
+		}
+
+		mInputB = value;
+	}
+
+	public Task<Integer> getInputA()
 	{
 		if (isInteger(mInputA))
 		{
@@ -150,7 +183,7 @@ public abstract class Wire
 		}
 	}
 
-	protected Task<Integer> getInputB()
+	public Task<Integer> getInputB()
 	{
 		if (isInteger(mInputB))
 		{

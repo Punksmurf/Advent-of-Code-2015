@@ -21,8 +21,19 @@ public class Day7NetworkSolution extends Solution
 			Wire.create(wire_description);
 		}
 
-		return Wire.getWire("a").solve()
-				.onSuccess(task -> String.format("Network says: a = %d", task.getResult()));
-	}
+		Task<Integer> first_task = Wire.getWire("a").solve();
 
+		return first_task
+				.onSuccessTask(task -> {
+					Wire.resetAll();
+					Wire.getWire("b").setInputA(String.valueOf(task.getResult()));
+					return Wire.getWire("a").solve();
+				})
+				.onSuccess(second_task ->
+					String.format("Network says: a (first) = %d\nNetwork says: a (second) = %d",
+							first_task.getResult(),
+							second_task.getResult())
+				);
+
+	}
 }

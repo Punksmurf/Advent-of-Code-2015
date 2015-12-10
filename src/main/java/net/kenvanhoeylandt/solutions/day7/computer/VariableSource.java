@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class VariableSource extends Source
 {
-	private final String mName;
+	private String mName;
 
 	public VariableSource(String name)
 	{
@@ -20,5 +20,18 @@ public class VariableSource extends Source
 		}
 
 		return null;
+	}
+
+	@Override
+	public void setValue(Object value)
+	{
+		if (value instanceof String)
+		{
+			mName = (String)value;
+		}
+		else
+		{
+			throw new RuntimeException("Cannot assign non-string value");
+		}
 	}
 }

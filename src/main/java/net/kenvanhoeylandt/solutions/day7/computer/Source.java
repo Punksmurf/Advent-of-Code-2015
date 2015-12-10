@@ -5,6 +5,7 @@ import java.util.Map;
 public abstract class Source
 {
 	abstract public Integer getValue(Map<String, Integer> values);
+	abstract public void setValue(Object value);
 	public static Source create(String description)
 	{
 		if (description == null)

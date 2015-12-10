@@ -16,6 +16,18 @@ public class Computer
 		}
 	}
 
+	public Instruction getInstructionForDestination(String destination)
+	{
+		for (Instruction instruction : mInstructions)
+		{
+			if (instruction.getDestination().equals(destination))
+			{
+				return instruction;
+			}
+		}
+		return null;
+	}
+
 	public void run()
 	{
 		run(1000);
