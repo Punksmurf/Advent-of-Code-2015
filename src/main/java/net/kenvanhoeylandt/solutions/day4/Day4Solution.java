@@ -2,8 +2,6 @@ package net.kenvanhoeylandt.solutions.day4;
 
 import bolts.Task;
 import net.kenvanhoeylandt.solutions.Solution;
-import sun.plugin2.message.Message;
-import sun.security.provider.MD5;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +24,7 @@ public class Day4Solution extends Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	public Task<Object> solve(String input) throws Exception
 	{
 		// input has a newline
 		input = input.trim();

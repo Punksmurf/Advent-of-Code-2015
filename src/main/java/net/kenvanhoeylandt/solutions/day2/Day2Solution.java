@@ -11,7 +11,7 @@ public class Day2Solution extends Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	public Task<Object> solve(String input) throws Exception
 	{
 		String[] packages = input.split("\n");
 

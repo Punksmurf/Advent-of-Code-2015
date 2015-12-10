@@ -11,7 +11,7 @@ public class Day3Solution extends Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	public Task<Object> solve(String input) throws Exception
 	{
 		String result = solveFirstAssignment(input) + '\n' + solveSecondAssignment(input);
 

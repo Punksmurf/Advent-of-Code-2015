@@ -1,7 +1,6 @@
 package net.kenvanhoeylandt.solutions.day1;
 
 import bolts.Task;
-import net.kenvanhoeylandt.exceptions.InputParsingException;
 
 public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 {
@@ -11,7 +10,7 @@ public class Day1Solution extends net.kenvanhoeylandt.solutions.Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	public Task<Object> solve(String input) throws Exception
 	{
 		int floor_index = 0;
         int basement_position = -1;

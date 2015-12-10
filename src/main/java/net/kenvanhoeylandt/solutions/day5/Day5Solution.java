@@ -11,24 +11,9 @@ public class Day5Solution extends Solution
 	}
 
 	@Override
-	protected Task<Object> solve(String input) throws Exception
+	public Task<Object> solve(String input) throws Exception
 	{
 		String[] words = input.split("\n");
-
-		//words = new String[]{
-		//		"ugknbfddgicrmopn",
-		//		"aaa",
-		//		"jchzalrnumimnmhp",
-		//		"haegwjzuvuyypxyu",
-		//		"dvszwmarrgswjxmb",
-		//};
-
-		//words = new String[]{
-		//		"qjhvhtzxzqqjkmpb",
-		//		"xxyxx",
-		//		"uurcxstgmygtbstg",
-		//		"ieodomkazucvgmuy",
-		//};
 
 		int nice = 0;
 		int really_nice = 0;

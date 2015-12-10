@@ -74,5 +74,5 @@ public abstract class Solution implements Runnable
 		return request_service.executeForString(request);
 	}
 
-	abstract protected Task<Object> solve(String input) throws Exception;
+	public abstract Task<Object> solve(String input) throws Exception;
 }
