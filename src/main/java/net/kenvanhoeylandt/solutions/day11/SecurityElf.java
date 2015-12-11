@@ -24,7 +24,7 @@ public class SecurityElf
 			char character = input.charAt(i);
 
 			if ( input.charAt(i + 1) == (character + 1)
-					&& input.charAt(i + 2) == (character + 2) )
+				&& input.charAt(i + 2) == (character + 2) )
 			{
 				return true;
 			}
@@ -61,12 +61,9 @@ public class SecurityElf
 			{
 				found_character = match_character;
 			}
-			else
+			else if (found_character != match_character)
 			{
-				if (found_character != match_character)
-				{
-					return true;
-				}
+				return true;
 			}
 		}
 
