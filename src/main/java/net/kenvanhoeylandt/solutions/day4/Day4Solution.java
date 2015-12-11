@@ -29,6 +29,8 @@ public class Day4Solution extends Solution
 		// input has a newline
 		input = input.trim();
 
+		long start_time = System.currentTimeMillis();
+
 		int five_zeroes = -1;
 		int six_zeroes = -1;
 
@@ -54,16 +56,15 @@ public class Day4Solution extends Solution
 				break;
 			}
 		}
-		String result = String.format("The mining result is %d for five zeroes and %d for six zeroes", five_zeroes, six_zeroes);
+		String result = String.format("The mining result is %d for five zeroes and %d for six zeroes, and it took %d ms", five_zeroes, six_zeroes, System.currentTimeMillis() - start_time);
 
 		return Task.forResult(result);
 	}
 
 	private byte[] hash(String input, int value)
 	{
-		String key = String.format("%s%d", input, value);
+		String key = input + value;
 		byte[] hash = mMD5.digest(key.getBytes());
-
 		return hash;
 	}
 }
