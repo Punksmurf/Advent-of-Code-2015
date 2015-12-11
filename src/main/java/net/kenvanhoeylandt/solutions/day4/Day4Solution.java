@@ -30,9 +30,6 @@ public class Day4Solution extends Solution
 		Arrays.fill(prefix_chars, '0');
 		String prefix = new String(prefix_chars);
 
-		// Remove the endline from the input
-		input = input.substring(0, input.length() - 1);
-
 		String hash = "";
 		int count = 0;
 		String secret;

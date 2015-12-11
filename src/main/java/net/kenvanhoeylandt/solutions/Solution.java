@@ -28,7 +28,16 @@ public abstract class Solution implements Runnable
 			{
 				System.out.println("done");
 				System.out.print("Solving assignment...");
-				return solve(task.getResult());
+
+				String input = task.getResult();
+
+				// Strip \n from website response
+				if (input.charAt(input.length() - 1) == '\n')
+				{
+					input = input.substring(0, input.length() - 1);
+				}
+
+				return solve(input);
 			})
 			.continueWith(task ->
 			{
