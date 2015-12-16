@@ -3,6 +3,7 @@ package net.kenvanhoeylandt;
 import net.kenvanhoeylandt.services.SessionService;
 import net.kenvanhoeylandt.solutions.Solution;
 import net.kenvanhoeylandt.solutions.day1.Day1Solution;
+import net.kenvanhoeylandt.solutions.day10.Day10Solution;
 import net.kenvanhoeylandt.solutions.day2.Day2Solution;
 import net.kenvanhoeylandt.solutions.day3.Day3Solution;
 import net.kenvanhoeylandt.solutions.day4.Day4Solution;
@@ -25,6 +26,7 @@ public class Application
         Day7Solution.class,
         Day8Solution.class,
         Day9Solution.class,
+        Day10Solution.class,
 	};
 
 	public static void main(String[] args)
