@@ -2,8 +2,14 @@ package net.kenvanhoeylandt.solutions.day3;
 
 public class Santa
 {
+	private final GridCity mGridCity;
 	private int mX = 0;
 	private int mY = 0;
+
+	public Santa(GridCity gridCity)
+	{
+		this.mGridCity = gridCity;
+	}
 
 	public void move(char direction)
 	{
@@ -24,6 +30,6 @@ public class Santa
 			default:
 				throw new RuntimeException("Invalid move");
 		}
-		House.getHouseFor(mX, mY).addPresent();
+		mGridCity.getHouseFor(mX, mY).addPresent();
 	}
 }

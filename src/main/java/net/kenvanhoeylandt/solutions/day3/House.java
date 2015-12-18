@@ -12,11 +12,10 @@ public class House
 
 	private int mPresents = 0;
 
-	private House(int x, int y)
+	public House(int x, int y)
 	{
 		mX = x;
 		mY = y;
-		sHouses.add(this);
 	}
 
 	public int getX()
@@ -42,38 +41,5 @@ public class House
 		return mPresents;
 	}
 
-
-	public static House getHouseFor(int x, int y)
-	{
-		for (House house : sHouses)
-		{
-			if (house.getX() == x && house.getY() == y)
-			{
-				return house;
-			}
-		}
-
-		return new House(x, y);
-	}
-
-	public static int getTotalHouses()
-	{
-		return sHouses.size();
-	}
-
-	public static int getTotalPresents()
-	{
-		int presents = 0;
-		for (House house : sHouses)
-		{
-			presents += house.getNumPresents();
-		}
-		return presents;
-	}
-
-	public static void reset()
-	{
-		sHouses.clear();
-	}
 
 }

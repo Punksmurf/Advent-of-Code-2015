@@ -13,52 +13,44 @@ public class Day3Solution extends Solution
 	@Override
 	public Task<Object> solve(String input) throws Exception
 	{
-		String result = solveFirstAssignment(input) + '\n' + solveSecondAssignment(input);
 
-		return Task.forResult(result);
-	}
+		// initialize cities and their (robo-)Santas.
+		GridCity barcelona = new GridCity();
+		Santa spanish_santa = new Santa(barcelona);
 
+		GridCity copenhagen = new GridCity();
+		Santa danish_santa = new Santa(copenhagen);
+		Santa robo_santa = new Santa(copenhagen);
 
-	private String solveFirstAssignment(String input)
-	{
-		House.reset();
-
-		Santa santa = new Santa();
-
-		House.getHouseFor(0, 0).addPresent();
+		// add the first presents
+		barcelona.getHouseFor(0, 0).addPresent();
+		copenhagen.getHouseFor(0, 0).addPresent();
+		copenhagen.getHouseFor(0, 0).addPresent();
 
 		for (int i = 0; i < input.length(); i++)
 		{
 			char direction = input.charAt(i);
-			santa.move(direction);
-		}
+			spanish_santa.move(direction);
 
-		return String.format("Santa visited %d houses for a total of %d gifts", House.getTotalHouses(), House.getTotalPresents());
-	}
-
-	private String solveSecondAssignment(String input)
-	{
-		House.reset();
-
-		Santa santa = new Santa();
-		Santa robot = new Santa();
-
-		House.getHouseFor(0, 0).addPresent();
-		House.getHouseFor(0, 0).addPresent();
-
-		for (int i = 0; i < input.length(); i += 2)
-		{
-			char direction = input.charAt(i);
-			santa.move(direction);
-
-			if (i < input.length() - 1)
+			if (i % 2 == 0)
 			{
-				direction = input.charAt(i+1);
-				robot.move(direction);
+				danish_santa.move(direction);
+			}
+			else
+			{
+				robo_santa.move(direction);
 			}
 		}
 
-		return String.format("Santa and RoboSanta visited %d houses for a total of %d gifts", House.getTotalHouses(), House.getTotalPresents());
+		String result = String.format(
+				"Spanish Santa visited %d houses in Barcelona for a total of %d gifts.\n"+
+				"Danish Santa and RoboSanta visited %d houses in Copenhagen for a total of %d gifts",
+				barcelona.getTotalHouses(), barcelona.getTotalPresents(),
+				copenhagen.getTotalHouses(), copenhagen.getTotalPresents()
+		);
+
+		return Task.forResult(result);
 	}
+
 
 }
