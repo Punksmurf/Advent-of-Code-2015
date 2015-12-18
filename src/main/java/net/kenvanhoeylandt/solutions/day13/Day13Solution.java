@@ -39,7 +39,8 @@ public class Day13Solution extends Solution
 
 	public static class Butler
 	{
-		private static final Pattern sPattern = Pattern.compile("(\\w+).*?(gain|lose).*?(\\d+).*?(\\w+)\\.");
+		// (?<guestName>\w+).*?(?<sign>gain|lose).*?(?<happiness>\d+).*?(?<relationName>\w+)\.
+		private static final Pattern sPattern = Pattern.compile("(?<guestName>\\w+).*?(?<sign>gain|lose).*?(?<happiness>\\d+).*?(?<relationName>\\w+)\\.");
 		private Map<String, Guest> mGuests = new HashMap<>();
 
 		private Guest getGuest(String name)
@@ -93,10 +94,10 @@ public class Day13Solution extends Solution
 			Matcher matcher = sPattern.matcher(guestInfo);
 			if (matcher.find())
 			{
-				String name = matcher.group(1);
-				String relation_name = matcher.group(4);
-				int happiness = Integer.valueOf(matcher.group(3));
-				if ("lose".equals(matcher.group(2)))
+				String name = matcher.group("guestName");
+				String relation_name = matcher.group("relationName");
+				int happiness = Integer.valueOf(matcher.group("happiness"));
+				if ("lose".equals(matcher.group("sign")))
 				{
 					happiness *= -1;
 				}

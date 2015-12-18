@@ -120,18 +120,17 @@ public class Day6Solution extends Solution
 	{
 		// (\d+),(\d+).*?(\d+),(\d+)
 
-		String regex = "(\\d+),(\\d+).*?(\\d+),(\\d+)";
+		String regex = "(?<x1>\\d+),(?<y1>\\d+).*?(?<x2>\\d+),(?<y2>\\d+)";
 
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(instruction);
 		matcher.find();
 
-		// matches 2, 3, 5 and 6 contain our coordinates
 		return new Bounds(
-				Integer.parseInt(matcher.group(1)),
-				Integer.parseInt(matcher.group(2)),
-				Integer.parseInt(matcher.group(3)),
-				Integer.parseInt(matcher.group(4))
+				Integer.parseInt(matcher.group("x1")),
+				Integer.parseInt(matcher.group("y1")),
+				Integer.parseInt(matcher.group("x2")),
+				Integer.parseInt(matcher.group("y2"))
 		);
 	}
 

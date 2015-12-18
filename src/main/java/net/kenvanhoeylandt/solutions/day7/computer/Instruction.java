@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Instruction
 {
-	private static Pattern mPattern = Pattern.compile("^([a-z0-9]+)?\\s?([A-Z]+)?\\s?([a-z0-9]+)?\\s->\\s([a-z0-9]+)$");
+	private static final Pattern sPattern = Pattern.compile("^(?<valueA>[a-z0-9]+)?\\s?(?<operator>[A-Z]+)?\\s?(?<valueB>[a-z0-9]+)?\\s->\\s(?<name>[a-z0-9]+)$");
 
 	private static enum Operator
 	{
@@ -66,14 +66,14 @@ public class Instruction
 
 		//  (value a  )    (OPERATOR)  (value b  )   ->  (destination)
 		// ^([a-z0-9]+)?\s?([A-Z]+)?\s?([a-z0-9]+)?\s->\s([a-z0-9]+)$
-		Matcher matcher = mPattern.matcher(instruction);
+		Matcher matcher = sPattern.matcher(instruction);
 
 		if (matcher.find())
 		{
-			String value_a = matcher.group(1);
-			String operator = matcher.group(2);
-			String value_b = matcher.group(3);
-			String destination = matcher.group(4);
+			String value_a = matcher.group("valueA");
+			String operator = matcher.group("operator");
+			String value_b = matcher.group("valueB");
+			String destination = matcher.group("name");
 
 			// rewire value b to value a for NOT operation
 			if (value_a == null && value_b != null && operator.equals("NOT"))

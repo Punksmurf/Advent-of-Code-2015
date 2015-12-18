@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Road
 {
 	// (\w*)\s*to\s*(\w*)\s*=\s*(\d*)
-	private static final Pattern sPattern = Pattern.compile("(\\w*)\\s*to\\s*(\\w*)\\s*=\\s*(\\d*)");
+	private static final Pattern sPattern = Pattern.compile("(?<from>\\w*)\\s*to\\s*(?<to>\\w*)\\s*=\\s*(?<distance>\\d*)");
 
 	private final String mCityA;
 	private final String mCityB;
@@ -17,7 +17,7 @@ public class Road
 		Matcher matcher = sPattern.matcher(route);
 		if (matcher.find())
 		{
-			return new Road(matcher.group(1), matcher.group(2), Integer.valueOf(matcher.group(3)));
+			return new Road(matcher.group("from"), matcher.group("to"), Integer.valueOf(matcher.group("distance")));
 		}
 		else
 		{

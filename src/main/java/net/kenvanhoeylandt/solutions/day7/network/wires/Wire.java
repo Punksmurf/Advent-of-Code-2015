@@ -10,8 +10,7 @@ import java.util.regex.Pattern;
 public abstract class Wire
 {
 	private static Map<String, Wire> sWires = new HashMap<>();
-	private static Pattern mPattern = Pattern.compile("^([a-z0-9]+)?\\s?([A-Z]+)?\\s?([a-z0-9]+)?\\s->\\s([a-z0-9]+)$");
-
+	private static Pattern sPattern = Pattern.compile("^(?<valueA>[a-z0-9]+)?\\s?(?<operator>[A-Z]+)?\\s?(?<valueB>[a-z0-9]+)?\\s->\\s(?<name>[a-z0-9]+)$");
 	private Operator mOperator;
 	private String mInputA;
 	private String mInputB;
@@ -65,12 +64,12 @@ public abstract class Wire
 
 		//  (value a  )    (OPERATOR)  (value b  )   ->  (destination)
 		// ^([a-z0-9]+)?\s?([A-Z]+)?\s?([a-z0-9]+)?\s->\s([a-z0-9]+)$
-		Matcher matcher = mPattern.matcher(description);
+		Matcher matcher = sPattern.matcher(description);
 
 		if (matcher.find())
 		{
 			Wire wire;
-			Operator operator = Operator.getFromString(matcher.group(2));
+			Operator operator = Operator.getFromString(matcher.group("operator"));
 
 			switch (operator)
 			{
@@ -98,9 +97,9 @@ public abstract class Wire
 
 			wire.mOperator = operator;
 
-			wire.mInputA = matcher.group(1);
-			wire.mInputB = matcher.group(3);
-			wire.mName = matcher.group(4);
+			wire.mInputA = matcher.group("valueA");
+			wire.mInputB = matcher.group("valueB");
+			wire.mName = matcher.group("name");
 
 			// rewire value b to value a for NOT operation for clarity
 			if (wire.mInputA == null && wire.mInputB != null && wire.mOperator == Operator.NOT)
