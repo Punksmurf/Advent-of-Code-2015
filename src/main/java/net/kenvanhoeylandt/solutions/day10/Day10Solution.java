@@ -33,10 +33,11 @@ public class Day10Solution extends Solution
 		}
 
 		String result = String.format(
-				"I looked and said, therefore I know 40 iterations has length: %d; Conway was smarter and calculated: %d.\n (but he probably got it wrong, though)." +
-				"I looked and said, therefore I know 40 iterations has length: %d; Conway was smarter and calculated: %d (but he probably got it wrong, though).",
+				"I looked and said, therefore I know 40 iterations has length: %d; Conway was smarter and calculated: %d (but he probably got it wrong, though).\n" +
+				"I looked and said, therefore I know 50 iterations has length: %d; Conway was smarter and calculated: %d (but he probably got it wrong, though).\n" +
+				"When he calculated based on the length of the 40 iterations result he got: %d",
 				length_40, (int)(length_initial * Math.pow(sConwaysConstant, 40)),
-				input.length(), (int)(length_initial * Math.pow(sConwaysConstant, 50)));
+				input.length(), (int)(length_initial * Math.pow(sConwaysConstant, 50)), (int)(length_40 * Math.pow(sConwaysConstant, 10)));
 
 		return Task.forResult(result);
 	}
