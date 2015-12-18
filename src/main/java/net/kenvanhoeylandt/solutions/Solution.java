@@ -1,11 +1,8 @@
 package net.kenvanhoeylandt.solutions;
 
-import com.squareup.okhttp.Request;
-
-import net.kenvanhoeylandt.exceptions.InputParsingException;
-import net.kenvanhoeylandt.services.RequestService;
-
 import bolts.Task;
+import net.kenvanhoeylandt.exceptions.InputParsingException;
+import net.kenvanhoeylandt.services.ChallengeDataService;
 
 public abstract class Solution implements Runnable
 {
@@ -23,11 +20,12 @@ public abstract class Solution implements Runnable
 
 		System.out.print("Retrieving assignment data...");
 
-		request(mDay)
+		ChallengeDataService.shared().request(mDay)
 			.onSuccessTask(task ->
 			{
 				System.out.println("done");
 				System.out.print("Solving assignment...");
+
 				return solve(task.getResult());
 			})
 			.continueWith(task ->
@@ -42,6 +40,7 @@ public abstract class Solution implements Runnable
 					if (message != null)
 					{
 						System.err.println("Solution failed: " + message);
+						exception.printStackTrace();
 					}
 					else
 					{
@@ -61,17 +60,6 @@ public abstract class Solution implements Runnable
 
 				return null;
 			});
-	}
-
-	private Task<String> request(int day)
-	{
-		RequestService request_service = RequestService.shared();
-
-		Request request = request_service.requestBuilder()
-			.url(String.format("http://adventofcode.com/day/%d/input", day))
-			.build();
-
-		return request_service.executeForString(request);
 	}
 
 	public abstract Task<Object> solve(String input) throws Exception;
