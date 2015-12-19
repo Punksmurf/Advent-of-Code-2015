@@ -3,6 +3,9 @@ package net.kenvanhoeylandt.solutions.day11;
 import bolts.Task;
 import net.kenvanhoeylandt.solutions.Solution;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Day11Solution extends Solution
 {
 
@@ -21,17 +24,25 @@ public class Day11Solution extends Solution
 	{
 		input = input.trim();
 
-		int tries = 0;
-		while (!isValid(input))
+		String new_password = getNextValidPassword(input);
+		String yet_another_password = getNextValidPassword(new_password);
+
+		String result = String.format("Santa's next valid password is: %s (but don't tell anyone).\nAfter that, his next valid one is: %s.", new_password, yet_another_password);
+		return Task.forResult(result);
+	}
+
+	public String getNextValidPassword(String input)
+	{
+		// If the given password is a valid one it still needs to be expired
+		if (isValid(input))
 		{
-			tries++;
 			input = getNextPassword(input);
 		}
-
-		String result = String.format("Santa's next valid password is: %s (but don't tell anyone).\nAs an aside, it took the elves %d tries to find it.", input, tries);
-
-
-		return Task.forResult(result);
+		while (!isValid(input))
+		{
+			input = getNextPassword(input);
+		}
+		return input;
 	}
 
 	public String getNextPassword(String password)
@@ -53,7 +64,6 @@ public class Day11Solution extends Solution
 
 		String new_password = new String(password_chars);
 
-		//return isValid(new_password) ? new_password : getNextPassword(new_password);
 		return new_password;
 	}
 
@@ -107,6 +117,30 @@ public class Day11Solution extends Solution
 	public boolean hasTwoDifferentPairs(String password)
 	{
 		// Passwords must contain at least two different, non-overlapping pairs of letters, like aa, bb, or zz.
-		return true;
+
+		Pattern pattern = Pattern.compile("(?<pair>(\\w)\\2)");
+
+		String last_match = null;
+		Matcher matcher = pattern.matcher(password);
+
+		boolean valid = false;
+
+		while(matcher.find())
+		{
+			if (last_match == null)
+			{
+				last_match = matcher.group("pair");
+			}
+			else
+			{
+				if (!last_match.equals(matcher.group("pair")))
+				{
+					valid = true;
+					break;
+				}
+			}
+		}
+
+		return valid;
 	}
 }
